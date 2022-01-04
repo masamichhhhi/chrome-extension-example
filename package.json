@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "webpack --mode production --config webpack.config.js"
+    "build": "webpack --mode production --config webpack.config.js",
+    "dev": "webpack --mode development --watch"
   },
   "dependencies": {
     "crx-hotreload": "^1.0.6",
