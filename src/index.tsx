@@ -1,16 +1,15 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { RecoilRoot } from 'recoil';
 
-const App = () => {
-  return (
-    <div
-      style={{ backgroundColor: "blue", color: "white", textAlign: "center" }}
-    >
-      This is React!
-    </div>
-  );
-};
+import CharacterCounter from '@/components/CharacterCounter';
 
-const app = document.createElement("div");
+const App = () => (
+  <RecoilRoot>
+    <CharacterCounter />
+  </RecoilRoot>
+);
+
+const app = document.createElement('div');
 document.body.prepend(app);
 ReactDOM.render(<App />, app);

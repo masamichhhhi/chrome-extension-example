@@ -5,23 +5,49 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack --mode production --config webpack.config.js",
-    "dev": "webpack --mode development --watch"
+    "dev": "webpack --mode development --watch",
+    "lint:js": "eslint '**/*.@(js|ts|tsx)'",
+    "lint:css": "stylelint '**/*.css'",
+    "check": "tsc && prettier --list-different . && npm run lint:js && npm run lint:css && npm run test",
+    "format": "prettier --write . && npm run lint:js -- --fix && npm run lint:css -- --fix"
+  },
+  "lint-staged": {
+    "*.@(ts|tsx)": "bash -c tsc",
+    "*.@(js|ts|tsx)": "eslint --fix",
+    "*.test.@(js|ts|tsx)": "jest",
+    "*.css": "stylelint --fix"
   },
   "dependencies": {
     "crx-hotreload": "^1.0.6",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "recoil": "^0.5.2"
   },
   "devDependencies": {
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.9.0",
+    "@typescript-eslint/parser": "^5.9.0",
     "awesome-typescript-loader": "^5.2.1",
     "copy-webpack-plugin": "^10.2.0",
     "css-loader": "^6.5.1",
+    "eslint": "^8.6.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-webpack": "^0.13.2",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
     "file-loader": "^6.2.0",
     "html-loader": "^3.0.1",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.4.5",
+    "prettier": "^2.5.1",
+    "stylelint": "^14.2.0",
+    "stylelint-config-standard": "^24.0.0",
+    "stylelint-order": "^5.0.0",
+    "ts-loader": "^9.2.6",
     "typescript": "^4.5.4",
     "webpack": "^5.65.0",
     "webpack-cli": "^4.9.1"
