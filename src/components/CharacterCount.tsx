@@ -1,6 +1,6 @@
-import React, { VFC } from "react";
+import React, { VFC } from 'react';
 
-import { useCharacterCountState } from "../globalStates/characterState";
+import { useCharacterCountState } from '../globalStates/characterState';
 
 const CharacterCount: VFC = () => {
   const count = useCharacterCountState();

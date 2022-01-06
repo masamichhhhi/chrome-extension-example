@@ -6,15 +6,17 @@
   "scripts": {
     "build": "webpack --mode production --config webpack.config.js",
     "dev": "webpack --mode development --watch",
-    "lint:js": "eslint '**/*.@(js|ts|tsx)'",
-    "lint:css": "stylelint '**/*.css'",
-    "check": "tsc && prettier --list-different . && npm run lint:js && npm run lint:css && npm run test",
-    "format": "prettier --write . && npm run lint:js -- --fix && npm run lint:css -- --fix"
+    "lint:js": "eslint './src/**/*.@(js|ts|tsx)'",
+    "lint:css": "stylelint './src/**/*.css'",
+    "prettier": "prettier --list-different './src/**/*.@(js|ts|tsx)'",
+    "test": "tsc && npm run prettier && npm run lint:js && npm run lint:css",
+    "format": "prettier --write './src/**/*.@(js|ts|tsx)' && npm run lint:js -- --fix && npm run lint:css -- --fix",
+    "prepare": "husky install",
+    "lint-staged": "lint-staged"
   },
   "lint-staged": {
     "*.@(ts|tsx)": "bash -c tsc",
     "*.@(js|ts|tsx)": "eslint --fix",
-    "*.test.@(js|ts|tsx)": "jest",
     "*.css": "stylelint --fix"
   },
   "dependencies": {
@@ -42,9 +44,13 @@
     "file-loader": "^6.2.0",
     "html-loader": "^3.0.1",
     "html-webpack-plugin": "^5.5.0",
+    "husky": "^7.0.0",
+    "lint-staged": "^12.1.5",
     "mini-css-extract-plugin": "^2.4.5",
     "prettier": "^2.5.1",
     "stylelint": "^14.2.0",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-recess-order": "^3.0.0",
     "stylelint-config-standard": "^24.0.0",
     "stylelint-order": "^5.0.0",
     "ts-loader": "^9.2.6",
